@@ -21,7 +21,7 @@
   const form = document.querySelector('[data-contact-form]');
   if (form) {
     const params = new URLSearchParams(window.location.search);
-    const models = ['Merchant', 'Dockyard', 'Raffles', 'Foundry'];
+    const models = ['Marlow', 'Calder', 'Alder', 'Rowan'];
     const model = params.get('model');
     for (const key of ['model', 'size', 'fabric']) {
       const field = form.elements.namedItem(key);
