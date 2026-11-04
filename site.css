@@ -233,3 +233,34 @@ section{padding:90px 0}
 .retail-price-guide+.soft-band{background:var(--ivory)}
 .field input[readonly]{background:#E9E4DA}
 button:disabled{cursor:wait;opacity:.65}
+
+/* Original fabric photography, presented as texture and colour swatches. */
+.material-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:22px}
+.product-copy .material-choice{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;appearance:none;padding:10px 7px;background:var(--paper);color:var(--espresso);border:1px solid var(--line);cursor:pointer;text-align:center;line-height:1.35}
+.product-copy .material-choice[aria-pressed="true"]{border-color:var(--espresso);box-shadow:inset 0 0 0 1px var(--espresso)}
+.material-choice strong{font-size:11px;font-weight:600}
+.material-detail{font-size:10px;color:var(--muted)}
+.material-choice small{font-size:9px;color:var(--muted)}
+.product-copy .material-choice:only-child{grid-column:1/-1;display:grid;grid-template-columns:64px minmax(0,1fr);gap:3px 14px;text-align:left;align-items:center;padding:12px}
+.material-choice:only-child .material-swatch{grid-column:1;grid-row:1/4;margin:0}
+.material-choice:only-child strong,.material-choice:only-child .material-detail,.material-choice:only-child small{grid-column:2}
+.material-swatch{display:block;width:64px;max-width:100%;aspect-ratio:1;background-repeat:no-repeat;background-color:var(--stone);margin-bottom:4px}
+.colour-options{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-content:start;gap:9px;max-height:350px;padding:3px 3px 8px}
+.product-copy .colour-name.swatch-choice{display:flex;flex-direction:column;appearance:none;min-width:0;padding:0;background:var(--paper);color:var(--espresso);overflow:hidden;line-height:1.35}
+.swatch-face{display:block;width:100%;aspect-ratio:1;background-repeat:no-repeat;background-color:var(--stone)}
+.swatch-label{display:flex;align-items:center;justify-content:center;width:100%;min-height:32px;padding:5px 3px;font-size:10px;overflow-wrap:anywhere}
+.product-copy .colour-name.swatch-choice[aria-pressed="true"]{border-color:var(--espresso);box-shadow:0 0 0 1px var(--espresso)}
+.swatch-choice[aria-pressed="true"] .swatch-label{background:var(--espresso);color:var(--paper)}
+.selected-swatch{display:grid;grid-template-columns:160px minmax(0,1fr);align-items:center;gap:17px;border:1px solid var(--line);padding:13px;margin:12px 0 5px;background:#E9E4DA}
+.selected-swatch[hidden]{display:none}
+.selected-swatch-image{width:160px;max-width:100%;aspect-ratio:1;background-repeat:no-repeat;background-color:var(--stone)}
+.selected-swatch strong{display:block;font:400 24px/1.2 var(--serif)}
+.product-copy .selected-swatch p{font-size:11px;line-height:1.5;margin:7px 0 0}
+@media(max-width:600px){
+ .colour-options{grid-template-columns:repeat(3,minmax(0,1fr));max-height:390px}
+ .material-options{gap:7px}
+ .material-swatch{width:54px}
+ .material-choice strong{font-size:10px}
+ .selected-swatch{grid-template-columns:124px minmax(0,1fr);gap:13px;padding:11px}
+ .selected-swatch-image{width:124px}
+}
