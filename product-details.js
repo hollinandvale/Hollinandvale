@@ -60,7 +60,7 @@
       title.id = 'hv-image-title';
       const close = node('button', 'hv-detail-button', 'Close');
       close.type = 'button';
-      close.setAttribute('aria-label', 'Close enlarged photograph');
+      close.setAttribute('aria-label', 'Close enlarged image');
       header.append(title, close);
       const media = node('div', 'hv-image-media');
       media.tabIndex = 0;
@@ -93,7 +93,7 @@
       let opener = null;
       const thumbnails = node('div', 'hv-gallery-thumbnails');
       thumbnails.setAttribute('role', 'group');
-      thumbnails.setAttribute('aria-label', model + ' photograph choices');
+      thumbnails.setAttribute('aria-label', model + ' image choices');
       const galleryStatus = node('p', 'hv-gallery-status');
       galleryStatus.setAttribute('aria-live', 'polite');
       galleryStatus.setAttribute('aria-atomic', 'true');
@@ -106,8 +106,8 @@
         });
         const photograph = photographs[current];
         photograph.image.loading = 'eager';
-        galleryStatus.textContent = 'Photograph ' + (current + 1) + ' of ' + photographs.length +
-          (photographs.length > 1 ? '. Select a thumbnail to explore, or enlarge the photograph.' : '. Enlarge for a closer look.');
+        galleryStatus.textContent = 'Image ' + (current + 1) + ' of ' + photographs.length +
+          (photographs.length > 1 ? '. Select a thumbnail to explore, or enlarge the image.' : '. Enlarge for a closer look.');
         return photograph;
       };
       const fit = () => {
