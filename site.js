@@ -174,7 +174,6 @@
           card.type = 'button';
           card.className = 'material-choice';
           card.dataset.fabric = name;
-          card.setAttribute('aria-label', 'Choose ' + name + ' upholstery; example texture in ' + example);
           card.setAttribute('aria-pressed', 'false');
           const image = document.createElement('span');
           image.className = 'material-swatch';
@@ -186,12 +185,13 @@
           const detail = document.createElement('span');
           detail.className = 'material-detail';
           detail.textContent = materialDetails[name] || '';
-          card.append(title, detail);
+          card.append(title, ' ', detail);
           if (visual) {
             const sample = document.createElement('small');
             sample.textContent = example + ' sample';
-            card.append(sample);
+            card.append(' ', sample);
           }
+          card.setAttribute('aria-label', ['Choose',title.textContent,detail.textContent,visual?example+' sample':''].filter(Boolean).join(' '));
           card.addEventListener('click', () => { fabric.value = name; updateColours(); update(); });
           materialOptions.append(card);
         }

@@ -267,3 +267,52 @@ button:disabled{cursor:wait;opacity:.65}
  .selected-swatch{grid-template-columns:124px minmax(0,1fr);gap:13px;padding:11px}
  .selected-swatch-image{width:124px}
 }
+
+/* Product navigation and optional trade project details. */
+.product-jump,.page-jump{display:flex;flex-wrap:wrap;gap:5px 22px;border-block:1px solid var(--line);padding:7px 0;margin:0 0 32px}
+.product-jump a,.page-jump a{display:inline-flex;align-items:center;min-height:44px;font-size:12px;border-bottom:1px solid transparent}
+.product-jump a:hover,.page-jump a:hover{border-color:currentColor}
+.project-brief{border:1px solid var(--line);padding:18px;margin:5px 0 0;min-width:0;background:var(--paper)}
+.project-brief[hidden]{display:none}
+.project-brief legend{font-size:13px;font-weight:700;padding:0 7px}
+.project-brief>.form-note{margin:0 0 15px}
+.project-brief-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+@media(max-width:600px){.product-jump,.page-jump{gap:0 18px;margin-bottom:24px}.product-jump a,.page-jump a{font-size:11px}.project-brief-grid{grid-template-columns:1fr}.project-brief .field.full{grid-column:auto}}
+@media print{.product-jump,.page-jump{display:none}}
+
+.page-hero .page-jump{margin:25px 0 0}
+.editorial-detail{margin:25px 0 0}
+.editorial-detail img{width:100%;height:auto}
+.editorial-detail figcaption{font-size:11px;color:var(--muted);margin-top:9px}
+/* Keep the editorial headline within narrow mobile viewports. */
+.hero-copy{min-width:0}
+@media(max-width:600px){.home-hero h1{font-size:clamp(46px,15vw,64px)}}
+
+@media(max-width:600px){
+ .product-intro{padding-top:48px}
+ .product-jump{flex-wrap:nowrap;gap:22px;overflow-x:auto;max-width:100%;margin-bottom:22px;scrollbar-width:thin}
+ .product-jump a{flex:0 0 auto;white-space:nowrap}
+}
+
+/* One semantic product overview; responsive order keeps price and name easy to find. */
+.product-layout{grid-template-areas:"gallery overview" "gallery choices";row-gap:0}
+.product-overview{grid-area:overview}
+.product-gallery{grid-area:gallery}
+.product-choices{grid-area:choices}
+.product-choices form{margin-top:18px}
+@media(max-width:900px){
+ .product-layout{grid-template-areas:"overview" "gallery" "choices";row-gap:26px}
+ .product-choices form{margin-top:0}
+}
+
+.mobile-starting-prices{display:none}
+@media(max-width:900px){
+ .product-copy .mobile-starting-prices{display:grid;gap:2px;margin:20px 0 0;color:var(--espresso)}
+ .mobile-starting-prices strong{font:400 27px/1.25 var(--serif)}
+ .mobile-starting-prices span{font-size:12px;color:var(--muted)}
+ .mobile-starting-prices small{font-size:10px;color:var(--muted)}
+ .product-choices .retail-price-block{margin-top:0}
+}
+
+/* Keep the chosen design in view while comparing upholstery on larger screens. */
+@media(min-width:901px){.product-gallery.hv-gallery-enhanced{position:sticky;top:100px}}

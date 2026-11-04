@@ -46,3 +46,10 @@ There is no active analytics collector in this frontend, so traffic, collected c
 Before publishing, check JavaScript syntax, JSON-LD and CSP hashes, local asset/link targets, catalogue/table/schema price agreement, and the real page response. In a browser, test 360/390px mobile, tablet and desktop layouts; keyboard/menu/Escape/resize; colour and price changes; product-to-contact/sample handoff; shortlist/save/share; gallery; printed specifications/checklist; invalid fields; backend error recovery and a clearly labelled test enquiry. Verify the record is available to the business and do not create an order or payment. Check the branded 404 at a nonexistent nested URL and test HTTPS, secondary-domain and path redirects separately.
 
 The November optimisation reduced the three swatch atlases from 1,522,010 to 581,768 bytes (61.8%) using 192px tiles and WebP quality 85. Row/column order and catalogue geometry are unchanged. Nine representative light, dark and coloured tiles were visually compared at the largest normal 160px selected-swatch display. Physical samples remain the way to assess real colour and texture.
+
+
+## Completion pass, 4 November 2026
+
+Optional aggregate statistics: statistics.js/statistics.css; disabled until explicit opt-in, no visitor IDs or form values; DNT/GPC respected. Endpoint is the existing H&V website-service /api/statistics with fixed origin/page/event allowlists. Coordinate new page paths with the service allowlist. Keep policy wording and consent controls in sync. 
+
+Protected operational console: https://hollin-and-vale-enquiries.r9shbntmg2.chatgpt.site/admin — owner ChatGPT sign-in required; no public records. It shows H&V enquiries and statistics for both websites, excludes QA by default and does not send email notifications. SITE_ADMIN_EMAIL stays secret in hosting runtime. Existing enquiry API and CORS are unchanged.

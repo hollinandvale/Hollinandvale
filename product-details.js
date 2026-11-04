@@ -121,7 +121,7 @@
       const show = index => {
         const photograph = selectPhotograph(index);
         fit();
-        image.src = photograph.image.currentSrc || photograph.image.src;
+        image.src = photograph.image.src;
         image.alt = photograph.image.alt;
         zoom.disabled = !(image.complete && image.naturalWidth > 0);
         caption.textContent = photograph.caption;
@@ -132,7 +132,7 @@
         const trigger = node('button', 'hv-image-trigger');
         trigger.type = 'button';
         trigger.setAttribute('aria-haspopup', 'dialog');
-        trigger.setAttribute('aria-label', 'Enlarge ' + model + ' image ' + (index + 1));
+        trigger.setAttribute('aria-label', 'Enlarge image ' + (index + 1) + ' of ' + model);
         photograph.image.before(trigger);
         trigger.append(photograph.image);
         trigger.append(node('span', 'hv-image-hint', 'Enlarge image'));
@@ -149,7 +149,7 @@
         thumbnail.setAttribute('aria-controls', photograph.figure.id);
         thumbnail.setAttribute('aria-pressed', 'false');
         const preview = node('img');
-        preview.src = photograph.image.currentSrc || photograph.image.src;
+        preview.src = photograph.image.src.replace(/\.webp(?:\?.*)?$/, '-thumb.webp');
         preview.alt = '';
         preview.setAttribute('aria-hidden', 'true');
         preview.loading = 'lazy';
@@ -214,6 +214,9 @@
   const selected = node('p', 'hv-selected-configuration');
   selected.setAttribute('aria-live', 'polite');
   const drawing = node('div', 'hv-dimension-drawing');
+  drawing.tabIndex = 0;
+  drawing.setAttribute('role', 'region');
+  drawing.setAttribute('aria-label', 'Selected sofa dimension diagram; scroll horizontally on smaller screens');
   const measurements = node('dl', 'hv-dimension-values');
   const note = node('p', 'hv-spec-note', 'Schematic only, not to scale. All measurements are in centimetres. Handmade upholstery can vary slightly. Confirm the final dimensions and check room, doorway, stair and delivery access before ordering.');
   panel.append(heading, selected, drawing, measurements, note);

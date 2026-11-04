@@ -7,7 +7,7 @@
 .guide-note a,.guide-copy a,.guide-panel a,.guide-fabric a,.planning-checklist a{border-bottom:1px solid currentColor}
 .guide-models{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .guide-model{min-width:0;border:1px solid var(--line);background:var(--paper)}
-.guide-model>img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.guide-model>img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover}
 .guide-model-copy{padding:21px}
 .guide-model h2{font:400 31px/1.1 var(--serif);margin:0 0 12px}
 .guide-model p{font-size:13px;color:var(--muted);margin:0 0 18px}

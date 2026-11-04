@@ -36,6 +36,10 @@
     options(field('size'),data?data.sizes:[],'Choose a size',field('size').value);
     options(field('fabric'),data?Object.keys(data.fabrics):[],'Choose upholstery',field('fabric').value);
     field('size').disabled=!data;field('fabric').disabled=!data;updateColours();
+    for(const name of ['size','fabric','colour','price']){
+      const detail=field(name)?.closest?.('[data-configuration-detail]');
+      if(detail)detail.hidden=!data;
+    }
   };
   options(field('model'),Object.keys(models),'Help me choose',params.get('model'));
   updateModel();
@@ -69,6 +73,14 @@
     }
     edit.href=url.href;
   }
+  const projectBrief=form.querySelector('[data-trade-brief]');
+  const updateProjectBrief=()=>{
+    const active=field('type').value==='Trade enquiry';
+    if(projectBrief){projectBrief.hidden=!active;projectBrief.disabled=!active;}
+    field('message').maxLength=active?4500:5000;
+  };
+  field('type').addEventListener('change',updateProjectBrief);
+  updateProjectBrief();
   const type=field('type').value,model=field('model').value;
   field('message').value= type==='Fabric samples' ? 'Please confirm availability, any sample charge and postage, and the expected dispatch timing for '+(samples.length?'my selected fabric samples.':'physical fabric samples'+(params.get('fabric')?' in '+String(params.get('fabric')).slice(0,60):'')+'.')
     : type==='Advice / call request' ? 'I would like some help with '+(model?'the '+model:'choosing a sofa')+'. Please contact me to discuss sizes, upholstery or arranging a call.'
@@ -84,6 +96,14 @@
   const collect=()=>{
     const data={};
     for(const name of ['name','email','business','type','model','size','fabric','colour','postcode','message','phone','contactPreference','timePreference','website'])data[name]=String(field(name)?.value||'').trim();
+    if(data.type==='Trade enquiry'){
+      const details=[
+        ['Project setting',field('projectSetting')?.value],
+        ['Approximate quantity',field('projectQuantity')?.value],
+        ['Preferred project timing',field('projectTiming')?.value]
+      ].filter(([,value])=>String(value||'').trim()).map(([label,value])=>label+': '+String(value).trim());
+      if(details.length)data.message=details.join('\n')+'\n\n'+data.message;
+    }
     data.samples=samples;
     return data;
   };
@@ -148,6 +168,7 @@
       const detail=document.createElement('p');detail.textContent='Reference '+result.receipt+'. We will use your contact details to respond. An enquiry does not confirm an order, sample dispatch or payment.';
       receipt.append(heading,detail);receipt.hidden=false;receipt.tabIndex=-1;receipt.focus();
       status.dataset.state='success';status.textContent='Saved successfully. Keep your reference for any follow-up. This confirmation is shown on the website; an automatic email has not been sent.';
+      if(typeof window.dispatchEvent==='function' && typeof CustomEvent==='function')window.dispatchEvent(new CustomEvent('site:conversion',{detail:{form:'enquiry'}}));
       complete=true;submit.textContent='Enquiry received';challenge=null;retry=null;
     }catch(error){
       status.dataset.state='error';status.textContent=(error&&error.name==='TimeoutError'?'We could not confirm receipt in time. Retry the same request to check safely.':error&&error.message?error.message:'We could not confirm receipt. Please try again.')+' Your details are still on this page. You can also use the email alternative below.';

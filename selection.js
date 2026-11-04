@@ -189,6 +189,7 @@
       status.textContent = 'Selection saved on this device.';
     }
   });
+  saveButton.dataset.saveSelection = '';
   saveButton.disabled = !writable;
 
   const showCopyFallback = link => {
