@@ -4,7 +4,7 @@ Reviewed 4 November 2026. This is a static GitHub Pages website; changes are pub
 
 ## Domains and source files
 
-- Current canonical: **https://hollinandvale.co.uk/** (`CNAME`, canonicals, Open Graph, structured data, `robots.txt` and `sitemap.xml`). The actual secondary domain is `hollinandvale.com`. The supplied names `hollinvale.com` and `hollinvale.co.uk` did not resolve in this audit; do not replace the canonical with them.
+- Current canonical: **https://hollinandvale.co.uk/** (`CNAME`, canonicals, Open Graph, structured data, `robots.txt` and `sitemap.xml`). Owner-confirmed secondary domains are `hollinandvale.com` and `hollinandvale.uk`. Both should permanently forward complete paths and queries to the HTTPS canonical, subject to authenticated registrar administration. Do not serve them as separate site origins or widen the enquiry service's CORS allowlist. The no-`and` domains are not substitutes.
 - `catalogue.js`: shared sizes, retail prices, available colours and swatch-grid metadata. Product HTML also contains visible price/dimension tables and Product JSON-LD; update these together and verify every affected configuration.
 - `marlow.html`, `calder.html`, `alder.html`, `rowan.html`: product descriptions, dimensions, materials, guarantees and enquiry links. `compare.html`, `collection.html` and `index.html` repeat selected facts/prices.
 - `site.js` and `site.css`: navigation, product selection, prices and shared presentation. `selection.*`: save/share choices on the customer's device. `product-details.*`: gallery, selected dimensions and printable specification. `samples.js`: swatches, sample shortlist and context carried to contact.
@@ -41,7 +41,7 @@ Do not add script `unsafe-inline` or permissive external origins to silence an e
 
 ## Enquiries, measurement and routine checks
 
-There is no active analytics collector in this frontend, so traffic, collected conversions and field Core Web Vitals are unmeasured. The enquiry success state provides an on-screen reference; it does not promise an automatic email acknowledgement. Automatic customer acknowledgement and owner email alerts have not been verified. Check the separate enquiry inbox/service and its operational notification path regularly.
+Optional aggregate statistics are implemented in this frontend and stay off until consent. Verify their live publication and ingestion separately; the implementation alone does not establish production collection. These counters do not measure unique visitors, attribution, completed orders or field Core Web Vitals. The enquiry success state provides an on-screen reference; it does not promise an automatic email acknowledgement. Automatic customer acknowledgement and owner email alerts have not been added. Check the protected enquiry console regularly and verify owner access before relying on it operationally.
 
 Before publishing, check JavaScript syntax, JSON-LD and CSP hashes, local asset/link targets, catalogue/table/schema price agreement, and the real page response. In a browser, test 360/390px mobile, tablet and desktop layouts; keyboard/menu/Escape/resize; colour and price changes; product-to-contact/sample handoff; shortlist/save/share; gallery; printed specifications/checklist; invalid fields; backend error recovery and a clearly labelled test enquiry. Verify the record is available to the business and do not create an order or payment. Check the branded 404 at a nonexistent nested URL and test HTTPS, secondary-domain and path redirects separately.
 

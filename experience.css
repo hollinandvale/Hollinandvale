@@ -38,6 +38,14 @@
 .enquiry-fallback textarea{width:100%;min-height:160px;margin:12px 0;background:var(--paper);border:1px solid var(--line);padding:12px;font:12px/1.6 var(--sans)}
 [data-requested-samples] textarea{min-height:110px}
 .contactbox p{font-size:13px}.contactbox a{overflow-wrap:anywhere}
+.order-steps{list-style:none;counter-reset:none;padding:0;margin:30px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.order-steps li{border-top:1px solid var(--line);padding-top:20px;min-width:0}
+.order-steps .step-number{font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.order-steps h3{font:400 27px/1.2 var(--serif);margin:13px 0}
+.order-steps p{font-size:14px;line-height:1.75;color:var(--muted);margin-bottom:0}
+.order-steps a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.order-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+@media(max-width:600px){.order-steps{grid-template-columns:1fr;gap:22px}}
 @media(max-width:1050px){.sample-colour-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.samples-layout{gap:30px}}
 @media(max-width:900px){.experience-cards{grid-template-columns:1fr;gap:16px}.experience-cards h3,.experience-cards p{max-width:none}.samples-layout{grid-template-columns:1fr}.sample-shortlist{position:static}.sample-colour-grid{grid-template-columns:repeat(4,minmax(0,1fr));max-height:520px}}
 @media(max-width:480px){.sample-colour-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sample-shortlist{padding:22px}.product-help-actions{gap:8px 16px}}

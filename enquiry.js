@@ -74,10 +74,22 @@
     edit.href=url.href;
   }
   const projectBrief=form.querySelector('[data-trade-brief]');
+  const requestGuidance=document.createElement('p');
+  requestGuidance.id='request-guidance';requestGuidance.className='form-note';
+  field('message').setAttribute('aria-describedby','request-guidance');
+  field('message').insertAdjacentElement('afterend',requestGuidance);
   const updateProjectBrief=()=>{
-    const active=field('type').value==='Trade enquiry';
+    const requestType=field('type').value;
+    const active=requestType==='Trade enquiry';
     if(projectBrief){projectBrief.hidden=!active;projectBrief.disabled=!active;}
     field('message').maxLength=active?4500:5000;
+    requestGuidance.textContent=requestType==='Aftercare'
+      ?'Include your order reference, delivery date, affected item and a description of the issue. Your message comes to Hollin & Vale for help with the next steps.'
+      :requestType==='Fabric samples'
+        ?'Tell us which fabrics and colours you would like to see. We confirm physical availability, any charge, postage and timing before arranging dispatch.'
+        :active
+          ?'Tell us about the intended setting, quantities, specification and delivery. Commercial upholstery suitability is checked separately.'
+          :'Include your preferred furniture, delivery postcode, access and timing, or tell us what you would like help choosing. We confirm full details before accepting an order.';
   };
   field('type').addEventListener('change',updateProjectBrief);
   updateProjectBrief();
