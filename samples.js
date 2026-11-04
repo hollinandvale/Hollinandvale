@@ -15,7 +15,7 @@
       advice.searchParams.set('enquiry', 'advice');
       for (const key of ['model','size','fabric','colour']) {
         const val = value(key);
-        if (val) { advice.searchParams.set(key,val); if(key!=='size')sample.searchParams.set(key,val); }
+        if (val) { advice.searchParams.set(key,val); sample.searchParams.set(key,val); }
       }
       const sampleLink=document.querySelector('[data-product-samples]');
       const adviceLink=document.querySelector('[data-product-advice]');
@@ -29,6 +29,7 @@
   const fabricSelect=document.querySelector('[data-sample-fabric]');
   if(!fabricSelect)return;
   const selectedModel=knownModel(params.get('model')) ? params.get('model') : '';
+  const selectedSize=selectedModel && models[selectedModel].sizes.includes(params.get('size')) ? params.get('size') : '';
   const fabrics=selectedModel ? models[selectedModel].fabrics : models.Marlow.fabrics;
   const grid=document.querySelector('[data-sample-grid]');
   const list=document.querySelector('[data-sample-shortlist]');
@@ -66,6 +67,11 @@
     status.textContent=chosen.length+' of 6 colours selected.';
     const target=new URL('contact.html',window.location.href);target.searchParams.set('enquiry','samples');
     if(selectedModel)target.searchParams.set('model',selectedModel);
+    if(selectedSize)target.searchParams.set('size',selectedSize);
+    if(chosen.length===1){
+      target.searchParams.set('fabric',chosen[0].fabric);
+      target.searchParams.set('colour',chosen[0].colour);
+    }
     if(chosen.length)target.searchParams.set('samples',JSON.stringify(chosen));
     enquire.href=target.href;
     const own=new URL(window.location.href);own.searchParams.delete('colour');own.searchParams.set('fabric',fabricSelect.value);

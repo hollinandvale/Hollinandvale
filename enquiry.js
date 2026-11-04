@@ -62,7 +62,12 @@
     form.querySelector('[data-requested-samples]').hidden=false;
     field('samplesSummary').value=samples.map(item=>item.fabric+' — '+item.colour).join('\n');
     const edit=form.querySelector('[data-requested-samples] a');
-    const url=new URL('samples.html',window.location.href);url.searchParams.set('samples',JSON.stringify(samples));edit.href=url.href;
+    const url=new URL('samples.html',window.location.href);url.searchParams.set('samples',JSON.stringify(samples));
+    if(validModel(field('model').value)){
+      url.searchParams.set('model',field('model').value);
+      if(models[field('model').value].sizes.includes(field('size').value))url.searchParams.set('size',field('size').value);
+    }
+    edit.href=url.href;
   }
   const type=field('type').value,model=field('model').value;
   field('message').value= type==='Fabric samples' ? 'Please confirm availability, any sample charge and postage, and the expected dispatch timing for '+(samples.length?'my selected fabric samples.':'physical fabric samples'+(params.get('fabric')?' in '+String(params.get('fabric')).slice(0,60):'')+'.')

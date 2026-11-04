@@ -25,6 +25,7 @@
 .sample-shortlist li{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:11px 0;font-size:12px}
 .sample-shortlist li span{display:block}.sample-shortlist li small{color:var(--muted)}
 .sample-remove{appearance:none;border:0;border-bottom:1px solid currentColor;background:transparent;color:var(--espresso);font-size:10px;padding:4px;cursor:pointer}
+.sample-remove{min-height:44px;min-width:44px}
 .sample-family-title{font:400 30px/1.15 var(--serif);margin:12px 0 18px}
 .contact-receipt{background:#e3e9df;border-left:3px solid var(--moss);padding:20px;margin-bottom:24px}
 .contact-receipt[hidden]{display:none}.contact-receipt strong{display:block;font:400 27px/1.2 var(--serif);margin-bottom:10px}
